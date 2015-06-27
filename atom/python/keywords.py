@@ -1,0 +1,31 @@
+from pynhost.grammars.atom import atomextension, atomutils
+from pynhost.grammars.atom.python import pyextension
+
+class PythonKeywordsGrammar(pyextension.PyExtensionGrammar):
+
+    activate_key = '{ctrl+alt+8}',
+
+    def __init__(self):
+        super().__init__()
+        self.settings['filtered words'] = []
+        self.mapping = {
+            'import': atomutils.OTHER['beginningConditionalSpace'] + 'import' + atomutils.OTHER['endConditionalSpace'],
+            '<hom_quad>': 'for' + atomutils.OTHER['endConditionalSpace'],
+            '<hom_in>': atomutils.OTHER['beginningConditionalSpace'] + 'in' + atomutils.OTHER['endConditionalSpace'],
+            '<hom_and>': atomutils.OTHER['beginningConditionalSpace'] + 'and' + atomutils.OTHER['endConditionalSpace'],
+            '<hom_assert>': 'assert' + atomutils.OTHER['endConditionalSpace'],
+            '<hom_break>': 'break{enter}',
+            '<hom_return>': 'return{}'.format(atomutils.OTHER['endConditionalSpace']),
+            '<hom_continue>': 'continue{enter}',
+            '<hom_as>': atomutils.OTHER['beginningConditionalSpace'] + 'as' + atomutils.OTHER['endConditionalSpace'],
+            '<hom_yield>': atomutils.OTHER['beginningConditionalSpace'] + 'yield' + atomutils.OTHER['endConditionalSpace'],
+            '<hom_try>': 'try:{enter}',
+            '<hom_not>': atomutils.OTHER['beginningConditionalSpace'] + 'not' + atomutils.OTHER['endConditionalSpace'],
+            '<hom_or>': atomutils.OTHER['beginningConditionalSpace'] + 'or' + atomutils.OTHER['endConditionalSpace'],
+            '<hom_is>': atomutils.OTHER['beginningConditionalSpace'] + 'is' + atomutils.OTHER['endConditionalSpace'],
+            '<hom_none>': 'None',
+            '<hom_false>': 'False',
+            '<hom_True>': 'True',
+            '<hom_if>': atomutils.OTHER['beginningConditionalSpace'] + 'if' + atomutils.OTHER['endConditionalSpace'],
+            '<hom_else>': atomutils.OTHER['beginningConditionalSpace'] + 'else',
+        }

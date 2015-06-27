@@ -1,0 +1,55 @@
+from pynhost import api, dynamic
+from pynhost.grammars.vimtastic import vimutils, vimextension
+from pynhost.grammars import baseutils, extension
+
+class ShortcutsGrammar(vimextension.VimExtensionGrammar):
+    def __init__(self):
+        super().__init__()
+        self.mapping = {
+            '<hom_vim> <hom_refresh>': '{esc}:so $MYVIMRC{enter}a',
+            '<hom_wave>': '{F8}{escape}$a:zz{enter}',
+            '<hom_stop>': '{escape}o{left}{left}{left}{left}',
+            '<hom_speak>': "print(''){left}{left}",
+            'otherwise': 'else:{enter}',
+            '<hom_braces>': '{{}}',
+            '<hom_scope>': '{{}}{left}{enter}{backspace}{enter}{esc}{alt+7}{up}$a{back}{back}{back}',
+            '<hom_pair>': '()',
+            '<hom_call>': '(){left}',
+            '<hom_block>': '[]',
+            '<hom_index>': '[]{left}',
+            '<hom_dict>': 'dict',
+            '<hom_show>': 'print(){left}',
+            '<hom_carb>': '{escape}f(a',
+            '<hom_join> <hom_line>': 'J',
+            '<hom_string>': "''{left}",
+            '<hom_link>': ': ',
+            '<hom_tab>': '{tab}',
+            '<hom_sleeve>': "{esc}be{right}a, ''{left}",
+            '<hom_straight>': '{esc}^i.{esc}' + vimutils.FUNCTIONS['AlignWithAbove'] + 'a{del}',
+            '<hom_bow> [<num>]': ['{alt+h}', dynamic.Num().add(-1)],
+            '<hom_shield> [<num>]': ['{alt+l}', dynamic.Num().add(-1)],
+            '<hom_dell> [<num>]': ['{del}', dynamic.Num().add(-1)],
+            '<hom_punch> [<num>]': ['{F2}"_ciw'],
+            '<hom_brain> [<num>]': ['{F2}yiwea'],
+            '<hom_green> [<num>]': ['{esc}', dynamic.Num(default=1, integer=False), '"_ddi'],  
+            '<hom_fuzzy>': '{F11}:CtrlP{enter}',
+            '<hom_new> <hom_buffer>': '{esc}:enew!{enter}i',
+            '<hom_sort> <end>': 'sort',
+            '<hom_care>': 'char',
+            '<hom_swap> <hom_line>': '{esc}ddpi',
+            '(<hom_viewport> | view port) <hom_close>': '{esc}:tabclose!{enter}',
+            '(<hom_viewport> | view port) <hom_new>': '{esc}:tabe!{enter}',
+            '(<hom_viewport> | view port) <hom_left>': '{esc}gTa',
+            '(<hom_viewport> | view port) <hom_right>': '{esc}gta',
+            '<hom_swap> <hom_drop>': '{esc}ddpa',
+            '(<hom_viewport> | view port) <hom_new>': '{esc}:tabe!{enter}',
+            '(<hom_viewport> | view port) <hom_left>': '{esc}gTa',
+            '(<hom_viewport> | view port) <hom_right>': '{esc}gta',
+            '<hom_swap> <hom_climb>': '{esc}ddkPa',
+            '(<hom_duplicate> | <hom_dupe>) [<hom_below>]': '{esc}yy$pi',
+            '(<hom_duplicate> | <hom_dupe>) <hom_above>': '{esc}yy0Pi',
+            '<hom_capitalize>': '{F2}{left}eb~{left}i',
+            '<hom_display> [<hom_line>] (number | numbers)': '{esc}:set nu{enter}a',
+            '<hom_elephant>': '{esc}mba{ctrl+v}{esc}' + vimutils.FUNCTIONS['DeleteLineIfEmpty'] + 'mc`b^i.{esc}' + vimutils.FUNCTIONS['AlignWithAbove'] + '{del}`c$a', 
+        
+}
