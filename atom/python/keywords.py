@@ -8,6 +8,7 @@ class PythonKeywordsGrammar(pyextension.PyExtensionGrammar):
     def __init__(self):
         super().__init__()
         self.settings['filtered words'] = []
+        self.settings['priority'] = 5
         self.mapping = {
             'import': atomutils.OTHER['beginningConditionalSpace'] + 'import' + atomutils.OTHER['endConditionalSpace'],
             '<hom_quad>': 'for' + atomutils.OTHER['endConditionalSpace'],
@@ -28,4 +29,11 @@ class PythonKeywordsGrammar(pyextension.PyExtensionGrammar):
             '<hom_True>': 'True',
             '<hom_if>': atomutils.OTHER['beginningConditionalSpace'] + 'if' + atomutils.OTHER['endConditionalSpace'],
             '<hom_else>': atomutils.OTHER['beginningConditionalSpace'] + 'else',
+            '<hom_from>': atomutils.OTHER['beginningConditionalSpace'] + 'from' + atomutils.OTHER['endConditionalSpace'],
+            '<hom_raise>': atomutils.OTHER['beginningConditionalSpace'] + 'raise' + atomutils.OTHER['endConditionalSpace'],
+            '<hom_except>': atomutils.OTHER['beginningConditionalSpace'] + 'except' + atomutils.OTHER['endConditionalSpace'],
+            '<hom_index> <hom_error>': atomutils.OTHER['beginningConditionalSpace'] + 'IndexError',
+            '(<hom_runtime> | <hom_run> <hom_time>) <hom_error>': atomutils.OTHER['beginningConditionalSpace'] + 'RuntimeError',
+            '<hom_pop>': 'pop',
+            '<hom_pass>': 'pass',
         }

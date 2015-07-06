@@ -57,7 +57,7 @@ class AtomShortcutGrammar(atomextension.AtomExtensionGrammar):
             '<hom_punch>': au.OTHER['clearSelect'] + '{ctrl+d}{back}',
             '<hom_comment>': '{ctrl+alt+Z}',
             '<hom_halt>': ', ',
-
+            'selfhood': 'self.',
         }
         self.settings['priority'] = 3
 
@@ -65,7 +65,7 @@ class AtomShortcutGrammar(atomextension.AtomExtensionGrammar):
         num = int(words[-1]) if words[-1].isdigit() else 1
         for i in range(num):
             api.send_string('{ctrl+l}')
-        api.send_string('{back}{left}{home}')
+        api.send_string('{back}{left}')
 
     def line_goto(self, words):
         api.send_string('{ctrl+g}')

@@ -26,10 +26,9 @@ class GlobalGrammar(extension.ExtensionGrammar):
         'minimize': '{alt+F9}',
         # 'again [<num>]': [dynamic.RepeatCommand(count=dynamic.Num(default=1))],
         '<hom_again> [<num>]': dynamic.Num(default=1),
-        '<hom_disable> <hom_vim>': self.disable_vim,
-        'enable <hom_vim>': self.enable_vim,
-        'negative <num>': self.negative_num,
+        '<hom_negative> <num>': self.negative_num,
         }
+        self.settings['priority'] = 4
 
     def again(self, words):
         self.command_history[-1].run()
@@ -82,19 +81,7 @@ class GlobalGrammar(extension.ExtensionGrammar):
             'coral': '- Google Chrome',
             'firefox': 'Vimperator',
         }
-        window_names = baseutils.get_open_window_names()
-        if ' '.join(words[1:]) in hotkeys:
-            for name, dec_id in window_names.items():
-                if hotkeys[' '.join(words[1:])] in name:
-                    pid = str(int(dec_id, 16))
-                    subprocess.call(['xdotool', 'windowfocus', pid])
-                    subprocess.call(['xdotool', 'windowactivate', pid])
-                    return
-        matches = difflib.get_close_matches(' '.join(words[1:]), window_names.keys(), cutoff=.2)
-        if matches:
-            pid = str(int(window_names[matches[0]], 16))
-            subprocess.call(['xdotool', 'windowfocus', pid])
-            subprocess.call(['xdotool', 'windowactivate', pid])
+        api.activate_window(' '.join(words[1:]))
 
     def mouse_click(self, words):
         api.mouse_click()
@@ -112,20 +99,24 @@ class GlobalGrammar(extension.ExtensionGrammar):
         for k, v in program_names.items():
             for name in v:
                 if program == name:
-                    t = threading.Thread(target=start_program_thread, args=(k,))
-                    t.start()
+                    FNULL = open(os.devnull, 'w')
+                    subprocess.call([k], stdout=FNULL, stderr=subprocess.STDOUT)
                     return
-
-    def disable_vim(self, words):
-        vimextension.VimExtensionGrammar.vim_enabled = False
-
-    def enable_vim(self, words):
-        vimextension.VimExtensionGrammar.vim_enabled = True
 
     def negative_num(self, words):
         api.send_string(str(-int(words[-1])))
 
-def start_program_thread(program):
-    FNULL = open(os.devnull, 'w')
-    subprocess.call([program], stdout=FNULL, stderr=subprocess.STDOUT)
-    return
+class SpecificOpenGrammar(extension.ExtensionGrammar):
+    def __init__(self):
+        super().__init__()
+        self.mapping = {
+        '<hom_open> <hom_atom> [<any> <1->]': self.open_atom,
+        '<hom_open> <hom_firefox> [<any> <1->]': self.open_firefox,
+        }
+        self.settings['priority'] = 5
+
+    def open_atom(self, words):
+        api.activate_window(['autumntastic'] + words[2:])
+
+    def open_firefox(self, words):
+        api.activate_window(['vimperator'] + words[2:])

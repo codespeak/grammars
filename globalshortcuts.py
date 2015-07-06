@@ -15,6 +15,8 @@ class GlobalShortcutsGrammar(extension.ExtensionGrammar):
         '<hom_django> <end>': 'django',
         '<hom_click>': self.click,
         '<hom_mouse> (<hom_high> | <hom_right> | <hom_down> | <hom_left>) <num>': self.mouse_move,
+        '[a] <hom_data>': 'data',
+        '<hom_project> <hom_search>': '{ctrl+shift+f}'
         }
 
     def click(self, words):

@@ -10,6 +10,9 @@ class PythonSnippetsGrammar(pyextension.PyExtensionGrammar):
         self.mapping = {
             '<hom_new> (<hom_func> | <hom_function>)': self.new_function,
             '<hom_new> <hom_class>': 'class :{left}',
+            '<hom_new> <hom_method>': 'def (self):' + '{left}' * 7,
+            '<hom_new> <hom_initializer>': 'def __init__(self):{left}{left}',
+            'sulfur': 'self.',
         }
 
     def new_function(self, words):

@@ -24,12 +24,12 @@ class TerminalGeneralGrammar(termextension.TerminalExtensionGrammar):
         '<hom_terminate>': '{ctrl+z}',
         '<hom_git> <hom_initialize>': 'git init{enter}',
         '<hom_paste>': '{ctrl+shift+v}',
-        '<hom_jump> <hom_django>': 'cd ' + baseutils.PATHS['django'] + '{enter}',
-        '<hom_jump> <hom_virtual>': 'cd ' + baseutils.PATHS['virtual'] + '{enter}',
-        '<hom_virtual> <hom_new>': 'virtualenv ',
-        '<hom_virtual> <hom_activate>': 'source bin/activate{enter}',
-        '<hom_virtual> <hom_deactivate>': 'deactivate{enter}',
+        '<hom_jump> {}'.format(baseutils.list_to_rule_string(baseutils.PATHS)): self.goto_path,
+        '<hom_atom>': 'atom ',
         }
+
+    def goto_path(self, words):
+        api.send_string('cd ' + baseutils.PATHS[words[1]] + '{enter}')
 
     def drop(self, words):
         if len(words) == 1:

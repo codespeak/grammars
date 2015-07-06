@@ -74,7 +74,7 @@ ALPHABET = {
     'vote': 'v',
     'wig': 'w',
     'x-ray': 'x',
-    'yet': 'y',
+    'young': 'y',
     'zone': 'z',
     }
 
@@ -113,8 +113,11 @@ VARIABLE_TYPES = [
 ]
 
 PATHS = {
-    'django': '/home/evan/Modules/Python/Python3/django',
-    'virtual': '/home/evan/Modules/Python/Python3/virtualenv'
+    'django': '/home/evan/modules/python/python3/django',
+    'virtual': '/home/evan/Modules/Python/Python3/virtualenv',
+    'home': '/home',
+    'grammars': '/usr/local/lib/python3.4/dist-packages/pynhost/grammars',
+    'python': '/home/evan/modules/python/python3',
 }
 
 def get_single_character(char, uppercase):

@@ -17,6 +17,8 @@ MOTIONS = {
     'final': '%',
     'first': '^',
     'absolute': '&',
+    'top': 'Q',
+    'bottom': 'W',
     'left': 'h',
     'low': 'j',
     'high': 'k',
@@ -82,7 +84,7 @@ INCREMENTAL_LIMITS = {
 
 def do_action(action):
     if action == 'copy':
-        api.send_string('{ctrl+c}')
+        api.send_string('{ctrl+c}' + OTHER['clearSelect'])
     elif action in ('grab', 'cut'):
         api.send_string('{ctrl+x}')
     elif action == 'paste':
