@@ -14,7 +14,7 @@ class GlobalGrammar(extension.ExtensionGrammar):
         self.mapping = {
         '(<hom_enter> | <hom_slap>) [<num>]': ['{enter}', dynamic.Num().add(-1)],
         '<hom_leap>': '{tab}',
-        'space': '{space}',
+        'space': ' ',
         '(escape | out)': '{escape}',
         '<hom_job> [<num>]': ['{backspace}', dynamic.Num().add(-1)],
         '<hom_tell> [<num>]': ['{delete}', dynamic.Num().add(-1)],
