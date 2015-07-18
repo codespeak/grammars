@@ -11,6 +11,7 @@ class AtomShortcutGrammar(atomextension.AtomExtensionGrammar):
             '<hom_begin>': '{ctrl+alt+8}',
             '<hom_atom> <hom_refresh>': '{ctrl+alt+r}',
             '<hom_scratch> [<num>]': ['{ctrl+z}', dynamic.Num().add(-1)],
+            '<hom_redo> [<num>]': ['{ctrl+y}', dynamic.Num().add(-1)],
             '<hom_save>': '{ctrl+s}',
             '<hom_debug> <hom_panel>': '{ctrl+shift+i}',
             '<hom_clear> (<hom_select>|<hom_selection>)': au.OTHER['clearSelect'],

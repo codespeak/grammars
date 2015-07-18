@@ -60,7 +60,7 @@ ALPHABET = {
     'kyte': 'k',
     "kyte's": 'k',
     'live': 'l',
-    'meek': 'm',
+    'mile': 'm',
     'need': 'n',
     'ostrich': 'o',
     'paint': 'p',
@@ -109,7 +109,7 @@ VARIABLE_TYPES = [
     'drive',
     'prop',
     'stretch',
-    'phrase',
+    'say',
 ]
 
 PATHS = {
@@ -149,7 +149,7 @@ def get_case(words, case):
         return ' '.join([word.title() for word in words])
     if case == 'stretch':
         return ', '.join(["'{}'".format(word) for word in words])
-    if case == 'phrase':
+    if case == 'say':
         return ' '.join(words)
 
 def set_number(words):

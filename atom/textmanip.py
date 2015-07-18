@@ -24,6 +24,7 @@ class AtomTextManipulationGrammar(atomextension.AtomExtensionGrammar):
             '[{}] fisher-price [<num>]'.format(baseutils.list_to_rule_string(atomutils.ACTIONS)): self.fisher_price,
             'copyleft [<num>]': self.copyleft,
             '{} <hom_word>'.format(baseutils.list_to_rule_string(atomutils.ACTIONS)): self.single_word,
+            '[{}] <hom_search> <any> <1->'.format(baseutils.list_to_rule_string(actionutils.ACTIONS): self.search_ahead,
         }
 
     def line_goto(self, words):
@@ -61,6 +62,15 @@ class AtomTextManipulationGrammar(atomextension.AtomExtensionGrammar):
         api.send_string(text)
 
     def incremental_search(self, words):
+        if not words[-1].isdigit():
+            words.append('1')
+        action = atomutils.ACTIONS.get(words[0], 'm')
+        limit = atomutils.INCREMENTAL_LIMITS[words[-3]]
+        search_value = self.search_chars[words[-2]]
+        num = words[-1]
+        api.send_string(self.activate + '{}-{}-{}-{}`^'.format(num, action, limit, search_value))
+
+    def search_ahead(self, words):
         if not words[-1].isdigit():
             words.append('1')
         action = atomutils.ACTIONS.get(words[0], 'm')

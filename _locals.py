@@ -1,7 +1,7 @@
 HOMOPHONES = {
     'above': {'about', 'out of'},
     'ask': {'at', 'asking'},
-    'atom': {'adam', 'at them', 'at 10', 'at some', 'at tim', 'add them'},
+    'atom': {'adam', 'at them', 'at 10', 'at some', 'at tim', 'add them', 'and him'},
     'beer': {'pierce', '.', 'beard', 'b or', 'peer', 'peered', 'year'},
     'begin': {'began'},
     'below': {'the low', 'a low'},
@@ -32,7 +32,7 @@ HOMOPHONES = {
     'cut': {'collect'},
     'dam': {'band', 'damn', 'man', 'dan'},
     'data': {'status'},
-    'dell': {"they'll", 'now', 'del', 'sell'},
+    'dell': {"they'll", 'now', 'del', 'sell', 'dealt'},
     'dir': {'dear', 'deer'},
     'disable': {'disabled'},
     'display': {'displayed', 'displays'},
@@ -44,6 +44,7 @@ HOMOPHONES = {
     'drop': {'dropped', 'prop', 'draw'},
     'duplicate': {'to locate'},
     'elephant': {'elephants'},
+    'enable': {'enabled'},
     'enter': {'and there'},
     'enumerate': {'enumerated', 'in numerate'},
     'eve': {'e', 'even', 'ethan', 'yves', 'eat', 'leave', 'steve', 'eve'},
@@ -53,6 +54,7 @@ HOMOPHONES = {
     'fish': {'dish', 'dished', 'pitch', 'finished', 'fiction', 'page', 'fishing', 'efficient', 'fisher', '-ish'},
     'flat': {'flats'},
     'foot': {'but'},
+    'foreign key': {'for in key', 'ivinkey', 'for rent key'},
     'frog': {'fog', 'dog', 'for the', 'prague', 'log', 'fraud', 'broad', 'froggy'},
     'function': {'functions', 'functioning'},
     'fuzzy': {'by the', 'as he'},
@@ -61,9 +63,10 @@ HOMOPHONES = {
     'green': {'clean', 'cream'},
     'grow': {'growth', 'grove', 'grows', 'of row', 'grow it', 'coro', 'wrote', 'cruel', 'grew', 'group'},
     'gun': {'done', 'gone', 'bun'},
-    'halt': {'alt','fault', 'hold', 'holt', 'holds', 'faults', 'halts'},
+    'halt': {'alt','fault', 'hold', 'holt', 'holds', 'faults', 'halts', 'hold'},
     'ice': {'nice', 'i', 'price'},
     'if': {'f'},
+    'import': {'imports', 'important'},
     'job': {'jobs', 'chop'},
     'jump': {'jumps', 'jumped'},
     'kill': {'killed', 'kills', 'kilt', 'gil', 'pill', 'hill', 'kiln', 'killer', 'by', 'kilo'},
@@ -82,6 +85,8 @@ HOMOPHONES = {
     'macro': {'mac or', 'crow', 'mac rd.'},
     'map': {'matt'},
     'mark': {'arc'},
+	'migrate': {'migrates'},
+    'mile': {},
     'mint': {'meant', "didn't", 'mitt'},
     'mod': {'modest'},
     'music': {'using'},
@@ -109,7 +114,7 @@ HOMOPHONES = {
     'recur': {'occur', 'weaker'},
     'record': {'recorder', 'recorded', 'records'},
     'relpath': {'rel path'},
-    'rib': {'red', 'webb', 'ridden', 'rid', 'ribbon', 'grid', 'vid', 'rabe', 'rib'},
+    'rib': {'red', 'webb', 'ridden', 'rid', 'ribbon', 'grid', 'vid', 'rabe', 'rip', 'rebbe', 'rep'},
     'right': {'rights', 'light', 'write', 'rate', 'wright', 'raked'},
     'ring': {'rang'},
     'risk': {'rest', 'rescue', 'brisk'},
@@ -185,5 +190,7 @@ NUMBERS_MAP = {
 }
 
 GLOBAL_CONTEXTS = {
-    'language': 'python'
+    'language': 'python',
+    'html enabled': False,
+    'django enabled': False,
 }

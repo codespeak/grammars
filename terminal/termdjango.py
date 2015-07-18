@@ -11,6 +11,7 @@ class TerminalDjangoGrammar(termextension.TerminalExtensionGrammar):
             '<hom_django> run': self.run_server,
             '<hom_django> start <hom_project>': 'django-admin.py startproject ',
             '<hom_django> start application': 'python3 manage.py startapp ',
+ 			'<hom_django> <hom_migrate>': 'python3 manage.py makemigrations && python3 manage.py migrate{enter}'
         }
 
     def run_server(self, words):
