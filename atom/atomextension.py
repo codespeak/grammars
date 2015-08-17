@@ -9,3 +9,6 @@ class AtomExtensionGrammar(extension.ExtensionGrammar):
     def __init__(self):
         super().__init__()
         self.app_context = 'Autumntastic'
+        self.mappings = {
+            'nonzero': '0',
+        }

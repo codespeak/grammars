@@ -24,7 +24,7 @@ class AtomTextManipulationGrammar(atomextension.AtomExtensionGrammar):
             '[{}] fisher-price [<num>]'.format(baseutils.list_to_rule_string(atomutils.ACTIONS)): self.fisher_price,
             'copyleft [<num>]': self.copyleft,
             '{} <hom_word>'.format(baseutils.list_to_rule_string(atomutils.ACTIONS)): self.single_word,
-            '[{}] <hom_search> <any> <1->'.format(baseutils.list_to_rule_string(actionutils.ACTIONS): self.search_ahead,
+            '[{}] <hom_search> <any> <1->'.format(baseutils.list_to_rule_string(atomutils.ACTIONS)): self.search_ahead,
         }
 
     def line_goto(self, words):

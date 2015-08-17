@@ -21,7 +21,7 @@ class TerminalGeneralGrammar(termextension.TerminalExtensionGrammar):
         'explore': 'caja .{enter}',
         'refresh': self.refresh,
         '(<hom_high> | <hom_low>) [<num>]': self.up_down,
-        '<hom_terminate>': '{ctrl+z}',
+        '<hom_terminate>': '{ctrl+c}',
         '<hom_git> <hom_initialize>': 'git init{enter}',
         '<hom_paste>': '{ctrl+shift+v}',
         '<hom_jump> {}'.format(baseutils.list_to_rule_string(baseutils.PATHS)): self.goto_path,

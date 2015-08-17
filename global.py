@@ -24,7 +24,7 @@ class GlobalGrammar(extension.ExtensionGrammar):
         '<hom_kill> program': '{alt+F4}',
         'maximize': '{alt+F10}',
         'minimize': '{alt+F9}',
-        # 'again [<num>]': [dynamic.RepeatCommand(count=dynamic.Num(default=1))],
+        '<hom_repeat> [<num>]': [dynamic.RepeatCommand(count=dynamic.Num(default=1))],
         '<hom_again> [<num>]': dynamic.Num(default=1),
         '<hom_negative> <num>': self.negative_num,
         }

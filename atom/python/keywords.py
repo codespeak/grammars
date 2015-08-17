@@ -35,5 +35,8 @@ class PythonKeywordsGrammar(pyextension.PyExtensionGrammar):
             '<hom_index> <hom_error>': atomutils.OTHER['beginningConditionalSpace'] + 'IndexError',
             '(<hom_runtime> | <hom_run> <hom_time>) <hom_error>': atomutils.OTHER['beginningConditionalSpace'] + 'RuntimeError',
             '<hom_pop>': 'pop',
+            '<hom_cast> <hom_integer>': 'int(){left}',
+            '<hom_cast> <hom_string>': 'str(){left}',
+            '<hom_strip>': 'strip',
             '<hom_pass>': 'pass',
         }

@@ -8,7 +8,6 @@ class AtomShortcutGrammar(atomextension.AtomExtensionGrammar):
     def __init__(self):
         super().__init__()
         self.mapping = {
-            '<hom_begin>': '{ctrl+alt+8}',
             '<hom_atom> <hom_refresh>': '{ctrl+alt+r}',
             '<hom_scratch> [<num>]': ['{ctrl+z}', dynamic.Num().add(-1)],
             '<hom_redo> [<num>]': ['{ctrl+y}', dynamic.Num().add(-1)],

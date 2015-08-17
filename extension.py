@@ -32,13 +32,8 @@ class ExtensionGrammar(grammarbase.GrammarBase):
         self.mapping = {
         }
 
-    def set_language(self, words):
-        language_map = {
-            'python': 'python3',
-            'c++': 'c++',
-            'c+': 'c++',
-            'c plus plus': 'c++',
-            'javascript': 'javascript',
-        }
-        language = language_map[''.join(words[1:])]
-        ExtensionGrammar.current_language = language
+    def _get_all_grammars(self):
+        grammars = self._handler._global_grammars
+        for context_string in self._handler._grammars:
+            grammars.extend(self._handler._grammars[context_string])
+        return grammars
