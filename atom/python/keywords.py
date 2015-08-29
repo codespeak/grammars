@@ -28,6 +28,7 @@ class PythonKeywordsGrammar(pyextension.PyExtensionGrammar):
             '<hom_false>': 'False',
             '<hom_true>': 'True',
             '<hom_if>': atomutils.OTHER['beginningConditionalSpace'] + 'if' + atomutils.OTHER['endConditionalSpace'],
+            '<hom_with>': atomutils.OTHER['beginningConditionalSpace'] + 'with' + atomutils.OTHER['endConditionalSpace'],
             '<hom_else>': atomutils.OTHER['beginningConditionalSpace'] + 'else',
             '<hom_from>': atomutils.OTHER['beginningConditionalSpace'] + 'from' + atomutils.OTHER['endConditionalSpace'],
             '<hom_raise>': atomutils.OTHER['beginningConditionalSpace'] + 'raise' + atomutils.OTHER['endConditionalSpace'],

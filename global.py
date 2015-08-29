@@ -11,6 +11,7 @@ from pynhost.grammars import baseutils, extension
 class GlobalGrammar(extension.ExtensionGrammar):
     def __init__(self):
         super().__init__()
+        self.settings['filtered words'] = []
         self.mapping = {
         '(<hom_enter> | <hom_slap>) [<num>]': ['{enter}', dynamic.Num().add(-1)],
         '<hom_leap>': '{tab}',
@@ -100,7 +101,7 @@ class GlobalGrammar(extension.ExtensionGrammar):
             for name in v:
                 if program == name:
                     FNULL = open(os.devnull, 'w')
-                    subprocess.call([k], stdout=FNULL, stderr=subprocess.STDOUT)
+                    subprocess.Popen([k], stdout=FNULL, stderr=subprocess.STDOUT)
                     return
 
     def negative_num(self, words):

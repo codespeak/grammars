@@ -29,7 +29,6 @@ class AtomShortcutGrammar(atomextension.AtomExtensionGrammar):
             '<hom_string>': "''{left}",
             '<hom_link>': ': ',
             '<hom_tab>': '{tab}',
-            '<hom_sleeve>': "{esc}be{right}a, ''{left}",
             '<hom_straight>': '',
             '<hom_bow> [<num>]': ['{ctrl+shift+alt+5}', dynamic.Num().add(-1)],
             '<hom_shield> [<num>]': ['{ctrl+shift+alt+4}', dynamic.Num().add(-1)],
@@ -43,9 +42,6 @@ class AtomShortcutGrammar(atomextension.AtomExtensionGrammar):
             '<hom_plant> [to] (<hom_left> | <hom_right>) [<num>]': self.tab_direction,
             '<hom_sort> <end>': 'sort',
             '<hom_care>': 'char',
-            '<hom_swap> <hom_line>': '{esc}ddpi',
-            '<hom_swap> <hom_drop>': '{esc}ddpa',
-            '<hom_swap> <hom_climb>': '{esc}ddkPa',
             '<hom_climb>': '{ctrl+shift+enter}',
             '<hom_drop>': '{end}{enter}',
             '(<hom_duplicate> | <hom_dupe>) [<hom_below>]': '{ctrl+D}',
@@ -58,6 +54,10 @@ class AtomShortcutGrammar(atomextension.AtomExtensionGrammar):
             '<hom_comment>': '{ctrl+alt+Z}',
             '<hom_halt>': ', ',
             'selfhood': 'self.',
+            '<hom_swap> <hom_high>': '{ctrl+up}',
+            '<hom_swap> <hom_low>': '{ctrl+down}',
+            '<hom_search>': '{ctrl+f}',
+            '<hom_bounce>': '{F3}'
         }
         self.settings['priority'] = 3
 
