@@ -8,7 +8,7 @@ class AtomShortcutGrammar(atomextension.AtomExtensionGrammar):
     def __init__(self):
         super().__init__()
         self.mapping = {
-            '<hom_nerd> <hom_focus>': '{ctrl+0}',
+            '<hom_nerd> <hom_focus>': '{alt+\\}',
             '<hom_nerd> <hom_new>': 'a',
             '<hom_nerd> <hom_move>': 'm',
             '<hom_nerd> <hom_duplicate>': 'd',

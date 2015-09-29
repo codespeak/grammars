@@ -1,8 +1,9 @@
 import time
 from pynhost import api, dynamic
-from pynhost.grammars import extension, baseutils
+from pynhost.grammars import extension, baseutils, _locals
 from pynhost.grammars.atom import atomextension
 from pynhost.grammars.atom import atomutils as au
+
 
 class AtomShortcutGrammar(atomextension.AtomExtensionGrammar):
     def __init__(self):
@@ -17,7 +18,6 @@ class AtomShortcutGrammar(atomextension.AtomExtensionGrammar):
             '<hom_wave>': au.OTHER['clearSelect'] + '{end}:{enter}',
             '<hom_stop>': au.OTHER['clearSelect'] + '{end}{enter}{back}',
             '<hom_braces>': '{{}}',
-            '<hom_scope>': '{{{enter}{enter}}}{up}{tab}',
             '<hom_pair>': '()',
             '<hom_call>': '(){left}',
             '<hom_block>': '[]',
@@ -30,8 +30,8 @@ class AtomShortcutGrammar(atomextension.AtomExtensionGrammar):
             '<hom_link>': ': ',
             '<hom_tab>': '{tab}',
             '<hom_straight>': '',
-            '<hom_bow> [<num>]': ['{ctrl+shift+alt+5}', dynamic.Num().add(-1)],
-            '<hom_shield> [<num>]': ['{ctrl+shift+alt+4}', dynamic.Num().add(-1)],
+            '<hom_bow> [<num>]': ['{ctrl+[}', dynamic.Num().add(-1)],
+            '<hom_shield> [<num>]': ['{ctrl+]}', dynamic.Num().add(-1)],
             '<hom_dell> [<num>]': ['{del}', dynamic.Num().add(-1)],
             '<hom_punch>': au.OTHER['clearSelect'] + '{ctrl+d}{back}',
             '<hom_brain>': au.OTHER['clearSelect'] + '{ctrl+d}{ctrl+c}' + au.OTHER['clearSelect'],
@@ -54,10 +54,12 @@ class AtomShortcutGrammar(atomextension.AtomExtensionGrammar):
             '<hom_comment>': '{ctrl+alt+Z}',
             '<hom_halt>': ', ',
             'selfhood': 'self.',
-            '<hom_swap> <hom_high>': '{ctrl+up}',
-            '<hom_swap> <hom_low>': '{ctrl+down}',
+            '<hom_swap> <hom_high> [<num>]': ['{ctrl+up}', dynamic.Num().add(-1)],
+            '<hom_swap> <hom_low> [<num>]': ['{ctrl+down}', dynamic.Num().add(-1)],
             '<hom_search>': '{ctrl+f}',
-            '<hom_bounce>': '{F3}'
+            '<hom_bounce>': '{F3}',
+            '<hom_sequence> <num> <1->': self.num_sequence,
+            '<hom_grab> <end>': '{ctrl+x}',
         }
         self.settings['priority'] = 3
 
@@ -84,3 +86,6 @@ class AtomShortcutGrammar(atomextension.AtomExtensionGrammar):
 
     def gogo(self, words):
         api.send_string('2-2-{}-ff$$'.format(words[-1]))
+
+    def num_sequence(self, words):
+        api.send_string(''.join(_locals.NUMBERS_MAP[n] if n in _locals.NUMBERS_MAP else n for n in words[1:]))

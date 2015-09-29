@@ -24,6 +24,7 @@ class TerminalGeneralGrammar(termextension.TerminalExtensionGrammar):
         '<hom_terminate>': '{ctrl+z}',
         '<hom_git> <hom_initialize>': 'git init{enter}',
         '<hom_paste>': '{ctrl+shift+v}',
+        '<hom_make> <hom_dear>': 'mkdir ',
         }
 
     def drop(self, words):

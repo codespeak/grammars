@@ -11,7 +11,6 @@ class PythonGeneralGrammar(pyextension.PyExtensionGrammar):
 
     def __init__(self):
         super().__init__()
-        self.app_context = r'Autumntastic.+?\.py'
         self.mapping = {
             '(<hom_debug>|to bug)': self.debug,
             '{} (<hom_function> | <hom_class>)'.format(

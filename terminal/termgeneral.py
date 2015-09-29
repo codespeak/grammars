@@ -26,6 +26,7 @@ class TerminalGeneralGrammar(termextension.TerminalExtensionGrammar):
         '<hom_paste>': '{ctrl+shift+v}',
         '<hom_jump> {}'.format(baseutils.list_to_rule_string(baseutils.PATHS)): self.goto_path,
         '<hom_atom>': 'atom ',
+        '<hom_make> <hom_dear>': 'mkdir ',
         }
 
     def goto_path(self, words):

@@ -115,11 +115,12 @@ class AtomTextManipulationGrammar2(atomextension.AtomExtensionGrammar):
         super().__init__()
         self.mapping = {
             '(<hom_grab> | <hom_copy> | <hom_kill> | <hom_select>) <num> (<hom_through> | <hom_fish>) <num>': self.multiple_lines,
+            '<hom_lob> [<num>]': ['{ctrl+l}', dynamic.Num().add(-1)]
         }
         self.settings['priority'] = 2
 
     def multiple_lines(self, words):
-        api.send_string('{}m{}{}!'.format(self.activate, atomutils.SIMPLE['line'], str(int(words[1]) - 1)))
+        api.send_string('{}m{}{}!'.format(self.activate, atomutils.SIMPLE['line'], str(int(words[1]))))
         api.send_string('{ctrl+l}')
         api.send_string('{}s{}{}!'.format(self.activate, atomutils.SIMPLE['line'], words[-1]))
         api.send_string('{ctrl+l}')
